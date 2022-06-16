@@ -46,11 +46,10 @@ const Auth = () => {
   }
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
-    console.log(formData);
   }
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
-    handleShowPassword(false);
+    setShowPassword(false);
   }
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -109,6 +108,7 @@ const Auth = () => {
                 label="Password"
                 handleChange={handleChange}
                 type={showPassword ? "text" : "password"}
+                handleShowPassword={handleShowPassword}
               />
               {isSignUp && (
                 <Input
