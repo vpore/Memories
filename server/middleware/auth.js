@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-
+//this middleware is to check if the user is authenticated or not
 const auth = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
@@ -12,7 +12,6 @@ const auth = async (req, res, next) => {
         else{
             decodedData = jwt.decode(token);
             req.userId = decodedData?.sub;
-            console.log(req.userId);
         }
 
         next();

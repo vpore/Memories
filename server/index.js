@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import cors from 'cors'; //look for it
+import cors from 'cors';
 import dotenv from 'dotenv';
 import postsRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
@@ -10,8 +10,8 @@ const app = express();
 dotenv.config();
 
 app.use(bodyParser.json({limit: "30mb", extended: true}));
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-app.use(cors());
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));//extended:true means to parse url-encoded-data to qs library
+app.use(cors());//Cross-Origin-Request-Sharing
 app.use('/posts', postsRoutes);
 app.use('/user', userRoutes);
 
